@@ -1,0 +1,81 @@
+# LINE-COMMENTS-ADDED
+# ==============================================================================================
+# FLOWERBOX-HEADER
+# ==============================================================================================
+#  1. Program Name               : multimodal-bankruptcy-early-warning-system  >
+#                                  news_signal.py
+#  2. Program Description        : This file describes the exact shape of the data (which
+#                                  fields, which types) that the web API accepts and sends
+#                                  back. It exists so this piece of work stays in its own
+#                                  small, easy-to-test file.
+#  3. Author Name                : Adishree Gupta and Akshat
+#  4. Date Created               : 2026-10-10
+#  5. Version Number             : 1.0.0
+#  6. Input                      : No direct input. Other files import and use what this file
+#                                  defines.
+#  7. Output                     : Class definitions (NewsSignalBase, NewsSignalCreate,
+#                                  NewsSignalRead) that other files can use.
+#  8. Variables                  : No file-level variables; values are kept inside the
+#                                  functions/classes.
+#  9. Algorithm / Logic          : - Class NewsSignalBase: news signal base.
+#                                  - Class NewsSignalCreate: news signal create.
+#                                  - Class NewsSignalRead: news signal read.
+# 10. Dependencies               : - External libraries (install with pip): pydantic.
+#                                  - Built into Python (no install needed): datetime, typing.
+# 11. Execution Instructions     : - Whole app: pip install -r requirements.txt, then uvicorn
+#                                    multimodal_bankruptcy_early_warning_system.main:app --port
+#                                    8000 (or: docker compose up).
+#                                  - Python 3.9 or newer is required.
+# 12. Assumptions and Limitations: - The required libraries listed above are installed.
+#                                  - Limitation: results are only as good as the data given to
+#                                    it.
+# 13. Error Handling             : No special error handling. If something goes wrong, Python
+#                                  stops and prints an error message explaining what failed.
+# ==============================================================================================
+
+# Switch on newer Python behaviour (here: type hints are not evaluated immediately, so they can
+# mention classes defined later).
+from __future__ import annotations
+
+# From datetime, Python's built-in date and time tools, bring in `datetime` so they can be used in
+# this file.
+from datetime import datetime
+# From typing, Python's built-in labels that describe what type a value is, bring in `Optional` so
+# they can be used in this file.
+from typing import Optional
+
+# From pydantic, a library that checks data has the right shape and types, bring in `BaseModel`,
+# `ConfigDict` so they can be used in this file.
+from pydantic import BaseModel, ConfigDict
+
+
+# Define `NewsSignalBase`: a data-shape definition that checks incoming/outgoing data, based on
+# `BaseModel` (it inherits their abilities).
+class NewsSignalBase(BaseModel):
+    # A field called `company_id` of type `Optional[int]`, starting value `None`.
+    company_id: Optional[int] = None
+    # A field called `sentiment` of type `Optional[float]`, starting value `None`.
+    sentiment: Optional[float] = None
+    # A field called `source` of type `Optional[str]`, starting value `None`.
+    source: Optional[str] = None
+    # A field called `ts` of type `Optional[datetime]`, starting value `None`.
+    ts: Optional[datetime] = None
+
+
+# Define a class (a blueprint for creating objects) named `NewsSignalCreate`, based on
+# `NewsSignalBase` (it inherits their abilities).
+class NewsSignalCreate(NewsSignalBase):
+    # Do nothing here (a placeholder so the block is not empty).
+    pass
+
+
+# Define a class (a blueprint for creating objects) named `NewsSignalRead`, based on
+# `NewsSignalBase` (it inherits their abilities).
+class NewsSignalRead(NewsSignalBase):
+    # Store a new `ConfigDict` object created from `from_attributes=True` in the variable
+    # `model_config`.
+    model_config = ConfigDict(from_attributes=True)
+    # Declare the variable `id` with the type `int` (no value yet).
+    id: int
+    # Declare the variable `created_at` with the type `datetime` (no value yet).
+    created_at: datetime
