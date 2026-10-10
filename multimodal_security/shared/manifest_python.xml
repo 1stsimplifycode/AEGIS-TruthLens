@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<MultimodalSecurityManifest version="1.0.0" timestamp="1772959588">
+  <Header>
+    <Language>Python</Language>
+    <Layer>1</Layer>
+    <Description>ZIP creation and AES-like stream encryption</Description>
+    <PassphraseKDF>PBKDF2-HMAC-SHA256 iterations=200000</PassphraseKDF>
+  </Header>
+  <Encryption>
+    <Algorithm>CTR-Stream-HMACSHA256</Algorithm>
+    <KeySizeBits>256</KeySizeBits>
+    <BlockSizeBytes>16</BlockSizeBytes>
+    <Salt>b305fd0479c1fdf3a59b06fb204662183ee3845b8fa45d22479b4ef5d471eabd</Salt>
+    <IV>11df208f5e0370f4db7935bf87cd4fad</IV>
+    <HMAC>3f1420526b9654bb97d112e1965c6c70de9b0a092f2f8a9ba32006471726b5e0</HMAC>
+    <CiphertextLength>512</CiphertextLength>
+  </Encryption>
+  <Hashes>
+    <EncryptedFileSHA256>d3c905ff52d8ae9d625872c1461fa3482ff85d696bb55dc66326ca48cb9841ab</EncryptedFileSHA256>
+    <OriginalZipSHA256>47e60fcf69a84295001471a8a055c4031dd0482835bfaec3c0f51a514c800f0a</OriginalZipSHA256>
+  </Hashes>
+  <FileInventory>
+    <File name="secret_doc.txt" sha256="f11a972c41b2398e2df20c8d4d3a96dfa96b05fcd49d8bc804b0699ae3457a98"/>
+    <File name="config.cfg" sha256="b2a62f291ca0ce7b43251eedc157e8e9d53fe797e59041f1bf29040809947714"/>
+    <File name="data.csv" sha256="78c9f3bd74de236d3589ac9bcd82e98060cda0320b7376e38b1e92ca299d727d"/>
+  </FileInventory>
+  <SecurityFlags>
+    <IntegrityCheck>HMAC-SHA256</IntegrityCheck>
+    <Padding>PKCS7</Padding>
+    <TimestampVerify>true</TimestampVerify>
+    <MagicHeader>4d4d53454300</MagicHeader>
+  </SecurityFlags>
+</MultimodalSecurityManifest>

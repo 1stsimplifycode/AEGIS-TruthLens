@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MultimodalSecurityManifest language="C++" layer="3">
+  <Timestamp>1772959704</Timestamp>
+  <Description>Feistel-cipher encryption with CRC-32 and SHA-256 verification</Description>
+
+  <Encryption>
+    <Algorithm>Feistel-CBC-16rounds</Algorithm>
+    <BlockSizeBits>64</BlockSizeBits>
+    <Rounds>16</Rounds>
+    <KeyDerivation>SHA256-based schedule</KeyDerivation>
+    <Padding>PKCS7</Padding>
+  </Encryption>
+
+  <FileInfo>
+    <Filename>archive_cpp.mmsec</Filename>
+    <SizeBytes>521</SizeBytes>
+    <SHA256>ba527a1dd9c7858102ce150cbcf516f19db58d2f605ebad22d922868ac7d881c</SHA256>
+    <CRC32>de495205</CRC32>
+    <Entropy>7.610196</Entropy>
+  </FileInfo>
+
+  <SecurityChecks>
+    <MagicHeader>4D4D432B</MagicHeader>
+    <VersionByte>03</VersionByte>
+    <IntegrityAlgo>CRC32 + SHA256</IntegrityAlgo>
+    <CipherMode>CBC</CipherMode>
+  </SecurityChecks>
+</MultimodalSecurityManifest>
